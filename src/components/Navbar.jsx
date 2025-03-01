@@ -5,6 +5,10 @@ import { FaHome, FaInfoCircle, FaServicestack, FaUsers, FaEnvelope } from "react
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const handleLinkClick = () => {
+    setMenuOpen(false);
+  };
+
   return (
     <nav className="bg-gray-800 text-white shadow-lg py-1 fixed top-0 left-0 w-full z-50 transition-all duration-300">
       <div className="container mx-auto flex justify-between items-center px-6">
@@ -22,7 +26,7 @@ const Navbar = () => {
             { to: "/team", label: "Our Team", icon: <FaUsers /> },
             { to: "/contact", label: "Contact", icon: <FaEnvelope /> }].map((item, index) => (
             <li key={index} className="border-b md:border-none">
-              <Link to={item.to} className="block px-6 py-3 md:py-0 hover:text-blue-400 flex items-center gap-2 transition-all duration-300 hover:scale-105">
+              <Link to={item.to} onClick={handleLinkClick} className="px-6 py-3 md:py-0 hover:text-blue-400 flex items-center gap-2 transition-all duration-300 hover:scale-105">
                 {item.icon} {item.label}
               </Link>
             </li>
