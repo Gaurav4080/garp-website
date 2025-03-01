@@ -2,7 +2,7 @@
   "name": "amh-advisors",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://Gaurav4080.github.io/amh-advisors",
+  "homepage": "https://gaurav4080.github.io/amh-advisors",
   "type": "module",
   "scripts": {
     "dev": "vite",
