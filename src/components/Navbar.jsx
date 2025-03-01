@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <nav className="bg-gray-800 text-white shadow-lg py-1 fixed top-0 left-0 w-full z-50 transition-all duration-300">
       <div className="container mx-auto flex justify-between items-center px-6">
-        <Link to="/home" className="text-2xl font-extrabold flex items-center gap-2 hover:scale-105 transition-transform font-serif">
+        <Link to="/" className="text-2xl font-extrabold flex items-center gap-2 hover:scale-105 transition-transform font-serif">
           <img className="h-16 w-auto" src="https://logoeps.com/wp-content/uploads/2013/05/the-institute-of-chartered-accountants-of-india-vector-logo.png" alt="" />
           <span className='font-cursive'>AMH Advisors</span>
         </Link>
@@ -20,7 +20,7 @@ const Navbar = () => {
           {menuOpen ? "✖" : "☰"}
         </button>
         <ul className={`absolute md:static top-16 left-0 w-full md:w-auto bg-gray-800 md:bg-transparent md:flex space-x-6 transition-all duration-300 ${menuOpen ? "block" : "hidden"}`}>
-          {[{ to: "/home", label: "Home", icon: <FaHome /> },
+          {[{ to: "/", label: "Home", icon: <FaHome /> },
             { to: "/about", label: "About Us", icon: <FaInfoCircle /> },
             { to: "/services", label: "Services", icon: <FaServicestack /> },
             { to: "/team", label: "Our Team", icon: <FaUsers /> },
