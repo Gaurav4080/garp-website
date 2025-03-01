@@ -1,138 +1,103 @@
+import { FaUserTie, FaUserGraduate, FaLaptopCode } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-const Home = () => {
-  const [showContent, setShowContent] = useState(false);
-  const [typedText, setTypedText] = useState("");
-  const texts = ["Your Trusted Taxation Partner", "Expert Taxation & Compliance"];
-  const typingSpeed = 150;
-  const erasingSpeed = 75;
-  const delayBetween = 2000;
+const teamMembers = [
+  { name: "Ms. Annpurna Aggarwal", role: "Founder - Chartered Accountant", experience: "She has considerable experience of more than 10 years in Indirect Tax Advisory, compliances, DGFT matters, Audit  Due diligence, and other laws viz. GST, Central Excise, Service Tax, VAT, Customs, FTP etc.", phone: "+91 94139 33176", icon: <FaUserTie className="text-blue-500 text-6xl" /> },
+  { name: "Mr. Mahesh Aggarwal", role: "Chartered Accountant", experience: "He has in-depth experience of 10 years in matters related to Direct Tax, Company Law Matters, Management Audit & Internal Audit. He has a strong understanding of the Retail & Hospitality sector in all areas relating to Taxation, Accounting, and Budgeting & Forecasting.", phone: "+91 91365 70688", icon: <FaUserTie className="text-green-500 text-6xl" /> },
+  { name: "Mr. Gaurav Agarwal", role: "Software Developer", experience: "", phone: "+91 95188 97525", icon: (
+      <div className="flex items-center justify-center gap-3">
+        <FaUserTie className="text-orange-500 text-6xl" />
+        <FaLaptopCode className="text-yellow-400 text-5xl" />
+      </div>
+    ) 
+  },
+  { name: "Mr. Kush Sapra", role: "Chartered Accountant", experience: "He has a considerable experience of more than 8 years in Indirect Tax Advisory, RERA compliances, GST Audit, Bank Audit, Income Tax Audit, Statuary Audit, Income Tax Assessment Proceedings, and Finalization of Books of Account for Corporate and Non-Corporate Clients.", icon: <FaUserTie className="text-orange-500 text-6xl" /> },
+  { name: "CS Sristi Sinha", role: "Company Secretary", experience: "Experience in Company Law Matters, Due Diligence, Certification under various Acts, and other secretarial matters.", icon: <FaUserGraduate className="text-purple-500 text-6xl" /> }
+];
 
+const useTypewriter = (text, speed = 75) => {
+  const [displayText, setDisplayText] = useState("");
+  
   useEffect(() => {
-    let textIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-
-    const type = () => {
-      if (!isDeleting && charIndex <= texts[textIndex].length) {
-        setTypedText(texts[textIndex].slice(0, charIndex));
-        charIndex++;
-        setTimeout(type, typingSpeed);
-      } else if (isDeleting && charIndex >= 0) {
-        setTypedText(texts[textIndex].slice(0, charIndex));
-        charIndex--;
-        setTimeout(type, erasingSpeed);
+    let i = 0;
+    const interval = setInterval(() => {
+      if (i < text.length) {
+        setDisplayText(text.slice(0, i + 1));
+        i++;
       } else {
-        isDeleting = !isDeleting;
-        if (!isDeleting) textIndex = (textIndex + 1) % texts.length;
-        setTimeout(type, delayBetween);
+        clearInterval(interval);
       }
-    };
+    }, speed);
+    
+    return () => clearInterval(interval);
+  }, [text, speed]);
 
-    type();
-  }, []);
+  return displayText;
+};
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const heroHeight = window.innerHeight * 0.7;
-      if (window.scrollY > heroHeight) {
-        setShowContent(true);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+const Team = () => {
+  const animatedTitle = useTypewriter("Meet Our Team...", 75);
 
   return (
-    <section className="relative w-full bg-[#0d0d0d] text-gray-200 overflow-hidden">
-      {/* Hero Section */}
-      <div 
-        className="relative w-full h-screen bg-cover bg-center"
-        style={{ backgroundImage: "url('https://media.istockphoto.com/id/1147525564/photo/confident-businesswoman-working-on-laptop-at-her-workplace-at-modern-office-blurred-background.jpg?s=612x612&w=0&k=20&c=vaxi5XcwEjISAjdaubD2-G-NypfMI3qmfGRVarrXY7U=')" }}
-      >
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div className="relative flex flex-col items-center justify-center h-full text-center px-6">
-          <motion.h1 
-            className="text-7xl sm:text-9xl font-extrabold tracking-wide text-white font-serif"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-          >
-            AMH Advisors
-          </motion.h1>
-          <motion.h2 
-            className="text-4xl sm:text-6xl font-light text-white tracking-wide min-h-[48px]"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
-          >
-            {typedText}
-          </motion.h2>
-          <motion.p 
-            className="text-xl sm:text-3xl text-white mt-4 font-light tracking-wide"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 1 }}
-          >
-            Expert Taxation, GST, and Corporate Compliance Solutions
-          </motion.p>
-        </div>
-      </div>
+    <section className="relative flex flex-col items-center min-h-screen w-full bg-[#0d0d0d] text-gray-200 px-6 pt-20 pb-16">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_#ff007f33,_transparent)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_#00ffff33,_transparent)]"></div>
 
-      {/* Our Services Section */}
-      <motion.div 
-        className="relative flex flex-col items-center w-full px-10 pt-32 pb-32 bg-[#0d0d0d]"
-        initial={{ opacity: 0, y: 30 }}
-        animate={showContent ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 1 }}
-      >
-        <motion.div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_#ff007f33,_transparent)]"></motion.div>
-        <motion.div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_#00ffff33,_transparent)]"></motion.div>
+      <h2 className="text-3xl sm:text-4xl font-light tracking-wide text-white mb-10 text-center">
+        {animatedTitle}
+      </h2>
 
-        <motion.h2 
-          className="text-6xl font-bold text-cyan-400 text-center relative"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
-          Our Services
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 w-full max-w-5xl">
+        {teamMembers.slice(0, 2).map((member, index) => (
           <motion.div 
-            className="h-1 w-32 bg-cyan-400 mx-auto mt-2"
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-          ></motion.div>
-        </motion.h2>
-        
-        <div className="flex flex-col items-center w-[70%] mx-auto mt-12 space-y-12">
-          {[
-            "Tax Consultancy & Compliance", 
-            "GST Registration & Filing", 
-            "Corporate Tax Planning", 
-            "International Taxation & Transfer Pricing", 
-            "Business Incorporation & Licensing", 
-            "Audit & Assurance Services", 
-            "Legal Representation in Tax Litigation", 
-            "Financial Advisory & Risk Management"
-          ].map((service, i) => (
-            <motion.div 
-              key={i} 
-              className={`w-full flex ${i % 2 === 0 ? 'justify-start' : 'justify-end'}`}
-              initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: i * 0.2 }}
-            >
-              <p className="text-gray-300 text-lg leading-relaxed max-w-2xl">
-                <strong>{service}:</strong> We provide expert guidance on {service.toLowerCase()}, ensuring businesses remain compliant while optimizing financial performance. Our dedicated team assists with strategic planning, risk assessment, and regulatory compliance to drive business success.
-              </p>
-            </motion.div>
-          ))}
+            key={index} 
+            whileHover={{ scale: 1.07, borderColor: "#ff007f" }} 
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: index * 0.15 }}
+            className="p-8 bg-[#1a1a1a] rounded-xl shadow-lg border-2 border-transparent hover:border-[#ff007f] transition-all duration-200 backdrop-blur-lg text-center flex flex-col items-center"
+          >
+            {member.icon}
+            <h3 className="text-xl lg:text-2xl font-semibold mt-4">{member.name}</h3>
+            <p className="text-gray-400 text-sm lg:text-lg">{member.role}</p>
+            <p className="text-gray-500 mt-2 text-sm">📞 {member.phone}</p>
+          </motion.div>
+        ))}
+
+        <div className="col-span-1 sm:col-span-2 flex justify-center">
+          <motion.div 
+            whileHover={{ scale: 1.07, borderColor: "#00ffff" }} 
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.3 }}
+            className="p-8 bg-[#1a1a1a] rounded-xl shadow-lg border-2 border-transparent hover:border-[#00ffff] transition-all duration-200 backdrop-blur-lg text-center w-full max-w-md"
+          >
+            <div className="flex justify-center">{teamMembers[2].icon}</div>
+            <h3 className="text-xl lg:text-2xl font-semibold mt-4">{teamMembers[2].name}</h3>
+            <p className="text-gray-400 text-sm lg:text-lg">{teamMembers[2].role}</p>
+            <p className="text-gray-500 mt-2 text-sm">📞 {teamMembers[2].phone}</p>
+          </motion.div>
         </div>
-      </motion.div>
+
+        {teamMembers.slice(3).map((member, index) => (
+          <motion.div 
+            key={index} 
+            whileHover={{ scale: 1.07, borderColor: "#ff007f" }} 
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: (index + 3) * 0.15 }}
+            className="p-8 bg-[#1a1a1a] rounded-xl shadow-lg border-2 border-transparent hover:border-[#ff007f] transition-all duration-200 backdrop-blur-lg text-center flex flex-col items-center"
+          >
+            {member.icon}
+            <h3 className="text-xl lg:text-2xl font-semibold mt-4">{member.name}</h3>
+            <p className="text-gray-400 text-sm lg:text-lg">{member.role}</p>
+            <p className="text-gray-500 mt-2 text-sm">📞 {member.phone}</p>
+          </motion.div>
+        ))}
+      </div>
     </section>
   );
 };
 
-export default Home;
+export default Team;
