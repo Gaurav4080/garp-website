@@ -30,11 +30,18 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    localStorage.setItem("contactForm", JSON.stringify(formData)); // Save form data to local storage
+    
+    // Save each field separately in localStorage
+    localStorage.setItem("contactName", formData.name);
+    localStorage.setItem("contactEmail", formData.email);
+    localStorage.setItem("contactMessage", formData.message);
+    
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 3000);
-    setFormData({ name: "", email: "", message: "" }); // Clear form fields after submission
-  };
+    
+    // Clear form fields after submission
+    setFormData({ name: localStorage.getItem("contactName"), email: localStorage.getItem("contactEmail"), message: localStorage.getItem("contactMessage") });
+  };  
 
   const customIcon = new Icon({ iconUrl: "https://cdn-icons-png.flaticon.com/128/2776/2776067.png", iconSize: [32, 32] });
 
