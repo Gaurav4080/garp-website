@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { Icon } from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaCheckCircle } from "react-icons/fa";
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaCheckCircle, FaGlobe } from "react-icons/fa";
 
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -30,18 +30,16 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     // Save each field separately in localStorage
     localStorage.setItem("contactName", formData.name);
     localStorage.setItem("contactEmail", formData.email);
     localStorage.setItem("contactMessage", formData.message);
-    
+
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 3000);
-    
-    // Clear form fields after submission
     setFormData({ name: localStorage.getItem("contactName"), email: localStorage.getItem("contactEmail"), message: localStorage.getItem("contactMessage") });
-  };  
+  };
 
   const customIcon = new Icon({ iconUrl: "https://cdn-icons-png.flaticon.com/128/2776/2776067.png", iconSize: [32, 32] });
 
@@ -51,9 +49,11 @@ const Contact = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl">
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="bg-[#1a1a1a] p-6 rounded-xl shadow-lg w-full border border-gray-700 backdrop-blur-lg flex flex-col justify-center">
           <div className="flex items-center gap-3 mb-4"><FaMapMarkerAlt className="text-red-400 text-xl" /><p className="text-lg">Zinnia 1117, SKA Metroville, Greater Noida</p></div>
-          <div className="flex items-center gap-3 mb-4"><FaPhoneAlt className="text-green-400 text-xl" /><p className="text-lg"><a href="tel:7014610220" className="hover:text-green-300 transition">7014610220</a>, <a href="tel:9413933176" className="hover:text-green-300 transition">9413933176</a></p></div>
-          <div className="flex items-center gap-3"><FaEnvelope className="text-blue-400 text-xl" /><p className="text-lg"><a href="mailto:caanu96@gmail.com" className="hover:text-blue-300 transition">caanu96@gmail.com</a></p></div>
+          <div className="flex items-center gap-3 mb-4"><FaPhoneAlt className="text-green-400 text-xl" /><p className="text-lg"><a href="tel:7014610220" className="hover:text-green-300 transition">7014610220</a>, <a href="tel:9413933176" className="hover:text-green-300 transition ml-2">9413933176</a></p></div>
+          <div className="flex items-center gap-3 mb-4"><FaEnvelope className="text-blue-400 text-xl" /><p className="text-lg"><a href="mailto:caanu96@gmail.com" className="hover:text-blue-300 transition">caanu96@gmail.com</a></p></div>
+          <div className="flex items-center gap-3 text-blue-500"><FaGlobe className="text-blue-400 text-xl" /><a href="https://amhadvisors.in" target="_blank" rel="noopener noreferrer" className="text-lg hover:text-blue-300 transition">www.amhadvisors.in</a></div>
         </motion.div>
+
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }} className="bg-[#121212] p-6 rounded-xl shadow-xl w-full border border-gray-700 backdrop-blur-lg">
           <h3 className="text-2xl font-light mb-4 text-gray-300 text-center">Send Us a Message</h3>
