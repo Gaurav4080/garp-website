@@ -51,7 +51,7 @@ const Contact = () => {
           <div className="flex items-center gap-3 mb-4"><FaMapMarkerAlt className="text-red-400 text-xl" /><p className="text-lg">Zinnia 1117, SKA Metroville, Greater Noida</p></div>
           <div className="flex items-center gap-3 mb-4"><FaPhoneAlt className="text-green-400 text-xl" /><p className="text-lg"><a href="tel:7014610220" className="hover:text-green-300 transition">7014610220</a>, <a href="tel:9413933176" className="hover:text-green-300 transition ml-2">9413933176</a></p></div>
           <div className="flex items-center gap-3 mb-4"><FaEnvelope className="text-blue-400 text-xl" /><p className="text-lg"><a href="mailto:caanu96@gmail.com" className="hover:text-blue-300 transition">caanu96@gmail.com</a></p></div>
-          <div className="flex items-center gap-3 text-blue-500"><FaGlobe className="text-blue-400 text-xl" /><a href="https://amhadvisors" target="_blank" rel="noopener noreferrer" className="text-lg hover:text-blue-300 transition">www.amhadvisors.in</a></div>
+          <div className="flex items-center gap-3 text-blue-500"><FaGlobe className="text-blue-400 text-xl" /><a href="https://amhadvisors.in/" target="_blank" rel="noopener noreferrer" className="text-lg hover:text-blue-300 transition">www.amhadvisors.in</a></div>
         </motion.div>
 
 
