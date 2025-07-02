@@ -3,7 +3,7 @@ import { FaFacebookF, FaLinkedinIn, FaInstagram, FaTwitter } from "react-icons/f
 const Footer = () => (
   <footer className="bg-gray-800 text-white py-4 mt-auto shadow-inner">
     <div className="container mx-auto flex flex-col md:flex-row justify-around items-center text-center md:text-left px-6">
-      <p className="font-semibold">© 2025 AMH Advisors | All Rights Reserved</p>
+      <p className="font-semibold">© 2025 GARP Advisors | All Rights Reserved</p>
       <div className="flex space-x-4 mt-2 md:mt-0">
         {[
           { href: "https://facebook.com", icon: <FaFacebookF />, color: "hover:text-blue-500" },

@@ -24,7 +24,7 @@ const About = () => {
     {
       title: "Who We Are",
       content:
-        "M/s AMH Advisors is a dynamic and seasoned chartered accountancy firm operating from Delhi & Noida. Our mission has been to be client-centric by providing professional services of the highest standard in a timely and effective manner and adhering to the code of conduct and ethics of the profession.",
+        "GARP Advisors is a dynamic and seasoned chartered accountancy firm operating from Delhi & Noida. Our mission has been to be client-centric by providing professional services of the highest standard in a timely and effective manner and adhering to the code of conduct and ethics of the profession.",
     },
     {
       title: "Our Impact",

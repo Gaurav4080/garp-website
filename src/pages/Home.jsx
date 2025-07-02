@@ -60,7 +60,7 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
-            AMH Advisors
+            GARP Advisors
           </motion.h1>
           <motion.h2 
             className="text-4xl sm:text-6xl font-light text-white tracking-wide min-h-[48px]"
