@@ -7,6 +7,7 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Team from "./pages/Team";
 import Contact from "./pages/Contact";
+import Client from "./pages/Client";
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -30,6 +31,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/team" element={<Team />} />
+          <Route path="/client" element={<Client />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </motion.main>
