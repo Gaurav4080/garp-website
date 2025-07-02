@@ -32,7 +32,7 @@ const Navbar = () => {
             className="text-2xl font-extrabold flex items-center gap-2 hover:opacity-80 transition-opacity font-serif"
           >
             <img
-              className="h-10 w-auto"
+              className="h-12 w-auto"
               src="https://logoeps.com/wp-content/uploads/2013/05/the-institute-of-chartered-accountants-of-india-vector-logo.png"
               alt="Logo"
             />
@@ -80,8 +80,10 @@ const Navbar = () => {
           } md:hidden`}
       >
         <div className="flex justify-between items-center px-4 py-4 border-b">
-          <h4 className="text-xl font-bold font-serif">GARP Advisors</h4>
-          <button
+          <h3 className="text-xl font-semibold tracking-tight text-slate-800">
+            <span className="text-indigo-600 font-bold">GARP</span>{" "}
+            <span className="text-slate-500">Advisors</span>
+          </h3>          <button
             className="text-xl"
             onClick={() => setMenuOpen(false)}
             aria-label="Close menu"
