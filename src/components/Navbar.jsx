@@ -7,7 +7,6 @@ import {
   FaUsers,
   FaEnvelope,
 } from "react-icons/fa";
-import { div } from "framer-motion/client";
 
 const navItems = [
   { to: "/", label: "Home", icon: <FaHome /> },
@@ -25,8 +24,8 @@ const Navbar = () => {
   return (
     <>
       {/* Desktop Horizontal Navbar */}
-      <nav className="hidden md:flex fixed top-0 left-0 w-full bg-white shadow-lg z-50">
-        <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4 w-full">
+      <nav className="hidden md:flex fixed top-0 left-0 w-full bg-slate-100 shadow-lg z-50">
+        <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-3 w-full">
           <Link
             to="/"
             className="text-2xl font-extrabold flex items-center gap-2 hover:opacity-80 transition-opacity font-serif"
